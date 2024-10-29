@@ -1,4 +1,4 @@
-module protoc
+module github.com/Petroshhhh/protopet
 
 go 1.22.0
 
