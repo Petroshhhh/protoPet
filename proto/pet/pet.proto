@@ -7,11 +7,11 @@ option go_package = "petrosh.pet.v1.petv1";
 // Определение сервиса для управления товарами
 service GoodsHand {
   rpc Create(CreateRequest) returns (CreateResponse);
-  rpc Update(UpdateRequest) returns (UpdateResponse);
+  //rpc Update(UpdateRequest) returns (UpdateResponse);
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc GetGoods(GetGoodsRequest) returns (GetGoodsResponse);
-  rpc ListGoods(ListGoodsRequest) returns (ListGoodsResponse);
-  rpc HistoryGoods(HistoryGoodsRequest) returns (HistoryGoodsResponse);
+  //rpc ListGoods(ListGoodsRequest) returns (ListGoodsResponse);
+  //rpc HistoryGoods(HistoryGoodsRequest) returns (HistoryGoodsResponse);
 }
 
 // Запрос на создание товара
@@ -28,14 +28,14 @@ message CreateResponse {
 }
 
 // Запрос на обновление товара
-message UpdateRequest {
-  int64 goods_id = 1;        // Идентификатор товара для обновления
-}
+//message UpdateRequest {
+//  int64 goods_id = 1;        // Идентификатор товара для обновления.добавить поля
+//}
 
 // Ответ на запрос обновления товара
-message UpdateResponse {
-  bool success = 1;          // Успех операции обновления
-}
+//message UpdateResponse {
+//  bool success = 1;          // Успех операции обновления
+//}
 
 // Запрос на удаление товара
 message DeleteRequest {
@@ -54,40 +54,42 @@ message GetGoodsRequest {
 
 // Ответ на запрос получения информации о товаре
 message GetGoodsResponse {
-  CreateRequest goods = 1;  // Информация о товаре
+  string brand = 1;          // Бренд товара
+  int64 place_save = 2;      // Место хранения
+  int64 store_house = 3;     // Идентификатор склада
+  string worker = 4;         // Работник, создающий товар
 }
 
 // Запрос на получение списка товаров с фильтрами и пагинацией
-message ListGoodsRequest {
-  string brand = 1;          // Бренд товара для фильтрации
-  int64 place_save = 2;      // Место хранения для фильтрации
-  int64 store_house = 3;     // Идентификатор склада для фильтрации
-  string worker = 4;         // Работник для фильтрации
-  string created_after = 5;   // Дата создания после которой искать товары
-  int64 page_number = 6;      // Номер страницы для пагинации
-  int64 page_size = 7;        // Количество товаров на странице (максимум)
-}
-
-// Ответ на запрос получения списка товаров
-message ListGoodsResponse {
-  repeated CreateRequest goods = 1; // Список найденных товаров
-  int64 total_count = 2;             // Общее количество найденных товаров
-}
-
-// Запрос на получение истории изменений товара
-message HistoryGoodsRequest {
-  int64 goods_id = 1;                // Идентификатор товара для получения истории изменений
-}
-
-// Запись об изменении товара в истории изменений
-message ChangeHistory {
-  int64 change_id = 1;               // Идентификатор изменения
-  int64 goods_id = 2;                 // Идентификатор товара, который изменился
-  string change_type = 3;             // Тип изменения (например, "UPDATE", "DELETE")
-  string timestamp = 4;               // Время изменения в формате ISO или другом формате даты/времени
-}
-
-// Ответ на запрос получения истории изменений товара
-message HistoryGoodsResponse {
-  repeated ChangeHistory history = 1; // Список изменений товара в истории
-}
+//message ListGoodsRequest {
+//  string brand = 1;          // Бренд товара для фильтрации
+//  int64 place_save = 2;      // Место хранения для фильтрации
+//  int64 store_house = 3;     // Идентификатор склада для фильтрации
+//  string worker = 4;         // Работник для фильтрации
+//  string created_after = 5;   // Дата создания после которой искать товары
+//  int64 page_number = 6;      // Номер страницы для пагинации
+//  int64 page_size = 7;        // Количество товаров на странице (максимум)
+//}
+//
+//// Ответ на запрос получения списка товаров
+//message ListGoodsResponse {
+//  repeated CreateRequest goods = 1; // Список найденных товаров
+//  int64 total_count = 2;             // Общее количество найденных товаров
+//}
+//
+//// Запрос на получение истории изменений товара
+//message HistoryGoodsRequest {
+//  int64 goods_id = 1;                // Идентификатор товара для получения истории изменений
+//}
+//
+//// Запись об изменении товара в истории изменений
+//message ChangeHistory {
+//  int64 change_id = 1;               // Идентификатор изменения
+//  string change_type = 2;             // Тип изменения (например, "UPDATE", "DELETE")
+//  string timestamp = 3;               // Время изменения в формате ISO или другом формате даты/времени
+//}
+//
+//// Ответ на запрос получения истории изменений товара
+//message HistoryGoodsResponse {
+//  repeated ChangeHistory history = 1; // Список изменений товара в истории
+//}
